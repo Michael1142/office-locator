@@ -2,6 +2,8 @@ package com.solirius.hosehackathon.utilities;
 
 import java.time.Duration;
 
+import static java.lang.Math.sqrt;
+
 public class Calculate {
 
     /**
@@ -16,6 +18,6 @@ public class Calculate {
     }
 
     public static double distance(double lat1, double lon1, double lat2, double lon2) {
-        return sqrt((lat2 - lat1) * (lat2 - lat1) + (lon2 - lon1) * (lon2 - lon1))
+        return sqrt((lat2 - lat1) * (lat2 - lat1) + (lon2 - lon1) * (lon2 - lon1));
     }
 }
