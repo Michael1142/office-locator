@@ -16,7 +16,6 @@ public class Calculate {
     }
 
     public static double distance(double lat1, double lon1, double lat2, double lon2) {
-        //Calculate distance
-        return 0;
+        return distance = sqrt((lat2 - lat1) * (lat2 - lat1) + (lon2 - lon1) * (lon2 - lon1))
     }
 }
