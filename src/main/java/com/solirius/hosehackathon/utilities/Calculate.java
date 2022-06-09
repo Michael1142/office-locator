@@ -14,13 +14,28 @@ public class Calculate {
     public static Office findClosestOffice(double lat, double lon) throws IOException, CsvException {
         List<Office> offices = new OfficeImporter().importCsv();
 
-        return findClosestOffice(offices, lat, lon);
+        return findClosestOffice(offices, lat, lon, false, false, false, false, false, false, false, false);
     }
 
-    public static Office findClosestOffice(List<Office> offices, double lat, double lon) throws IOException, CsvException {
+    public static Office findClosestOffice(List<Office> offices, double lat, double lon,
+                                           boolean wifi,
+                                           boolean extendedAccess, boolean meetingRooms,
+                                           boolean kitchen, boolean breakArea,
+                                           boolean petFriendly, boolean printing,
+                                           boolean shower
+    ) {
         double shortest = -1;
         Office res = null;
         for (Office office : offices) {
+            if (wifi && !office.isWifi()) continue;
+            if (extendedAccess && !office.isWifi()) continue;
+            if (meetingRooms && !office.isMeetingRooms()) continue;
+            if (kitchen && !office.isKitchen()) continue;
+            if (breakArea && !office.isBreakArea()) continue;
+            if (petFriendly && !office.isPetFriendly()) continue;
+            if (printing && !office.isPrinting()) continue;
+            if (shower && !office.isShower()) continue;
+
             double newDistance = distance(office.getLatitude(), office.getLongitude(), lat, lon);
             if (shortest == -1 || shortest > newDistance) {
                 shortest = newDistance;

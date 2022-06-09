@@ -20,14 +20,14 @@ public class OfficeRestController {
     @Autowired
     private OfficeRepository officeRepository;
 
-
-/*    @GetMapping(value = "/offices")
-    public Iterable<Office> findAll() {
-        return officeRepository.findAll();
-    }*/
-
     @GetMapping(value = "/offices")
-    public Iterable<Office> findAll(@RequestParam(required = false) Double latitude, @RequestParam(required = false) Double longitude) {
+    public Iterable<Office> findAll(@RequestParam(required = false) Double latitude, @RequestParam(required = false) Double longitude,
+                                    @RequestParam(required = false) boolean wifi,
+                                    @RequestParam(required = false) boolean extendedAccess, @RequestParam(required = false) boolean meetingRooms,
+                                    @RequestParam(required = false) boolean kitchen, @RequestParam(required = false) boolean breakArea,
+                                    @RequestParam(required = false) boolean petFriendly, @RequestParam(required = false) boolean printing,
+                                    @RequestParam(required = false) boolean shower
+    ) {
         Iterable<Office> all = officeRepository.findAll();
 
         if (latitude == null || longitude == null) {
@@ -39,7 +39,12 @@ public class OfficeRestController {
         }
         Office res = null;
         try {
-            res = Calculate.findClosestOffice(offices, latitude, longitude);
+            res = Calculate.findClosestOffice(offices, latitude, longitude,
+                    wifi,
+                    extendedAccess, meetingRooms,
+                    kitchen, breakArea,
+                    petFriendly, printing,
+                    shower);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
