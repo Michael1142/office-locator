@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Office {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private double latitude;
     private double longitude;

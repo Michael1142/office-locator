@@ -1,10 +1,10 @@
 package com.solirius.hosehackathon.utilities;
 
 import com.opencsv.exceptions.CsvException;
+import com.solirius.hosehackathon.domain.Office;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,7 +12,7 @@ class CalculateTest {
 
     @Test
     void noDistance() {
-        double distance = Calculate.distance(0,0, 0, 0);
+        double distance = Calculate.distance(0, 0, 0, 0);
         assertEquals(0, distance);
     }
 
@@ -24,8 +24,8 @@ class CalculateTest {
 
     @Test
     void findShortest() throws IOException, CsvException {
-        String closestOffice = Calculate.findClosestOffice(0, 0);
-        assertEquals("\"closest\"", closestOffice);
+        Office closestOffice = Calculate.findClosestOffice(0, 0);
+        assertEquals("\"Marazion Marsh\"", closestOffice.getName());
     }
 
 

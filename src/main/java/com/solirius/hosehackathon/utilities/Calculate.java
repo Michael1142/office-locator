@@ -11,16 +11,20 @@ import static java.lang.Math.sqrt;
 public class Calculate {
 
 
-    public static String findClosestOffice(double lat, double lon) throws IOException, CsvException {
+    public static Office findClosestOffice(double lat, double lon) throws IOException, CsvException {
         List<Office> offices = new OfficeImporter().importCsv();
 
+        return findClosestOffice(offices, lat, lon);
+    }
+
+    public static Office findClosestOffice(List<Office> offices, double lat, double lon) throws IOException, CsvException {
         double shortest = -1;
-        String res = "";
+        Office res = null;
         for (Office office : offices) {
             double newDistance = distance(office.getLatitude(), office.getLongitude(), lat, lon);
             if (shortest == -1 || shortest > newDistance) {
                 shortest = newDistance;
-                res = office.getName();
+                res = office;
             }
         }
 
