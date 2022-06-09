@@ -26,7 +26,9 @@ public class OfficeRestController {
                                     @RequestParam(required = false) boolean extendedAccess, @RequestParam(required = false) boolean meetingRooms,
                                     @RequestParam(required = false) boolean kitchen, @RequestParam(required = false) boolean breakArea,
                                     @RequestParam(required = false) boolean petFriendly, @RequestParam(required = false) boolean printing,
-                                    @RequestParam(required = false) boolean shower
+                                    @RequestParam(required = false) boolean shower,
+                                    @RequestParam(required = false) boolean optimised
+
     ) {
         Iterable<Office> all = officeRepository.findAll();
 
@@ -44,7 +46,7 @@ public class OfficeRestController {
                     extendedAccess, meetingRooms,
                     kitchen, breakArea,
                     petFriendly, printing,
-                    shower);
+                    shower, optimised);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
