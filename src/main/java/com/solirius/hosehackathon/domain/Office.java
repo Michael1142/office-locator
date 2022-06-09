@@ -48,6 +48,12 @@ public class Office {
         this.shower = shower;
     }
 
+    public Office(double latitude, double longitude, String name) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+    }
+
     public double getLatitude() {
         return latitude;
     }
